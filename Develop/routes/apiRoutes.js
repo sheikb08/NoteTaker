@@ -1,40 +1,39 @@
+//Requiring Read/Write abilitites
 const fs = require("fs");
-
+//This will appoint each note to a unique ID
 const { v4: uuidv4 } = require('uuid');
 
 
 module.exports = function(app){
 
+    //Retrieve information from JSON when route is activated
     app.get("/api/notes", function(req, res) {
-        
-        console.log("\n\nExecuting GET notes request");
-
+     
         // Read 'db.json' file 
         let notes = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
         
-        console.log("\nGET request - Returning notes data: " + JSON.stringify(notes));
+        console.log("\nHere is your data from the JSON file: " + JSON.stringify(notes));
         
-        // Send read data to response of 'GET' request
+        // Responding to the request with the data
         res.json(notes);
     });
 
 
-app.post("/api/notes", (req, res) => {
-    // Extracted new note from request body.  
+app.post("/api/notes", function (req, res) {
+    // Pulling new note from information provided by user within the body.  
     const newNotes = req.body;
-        
-    console.log("\n\nPOST request - New Note : " + JSON.stringify(newNotes));
+    JSON.stringify(newNotes);
 
-    // Assigned unique id obtained from 'uuid' package
+    // Assigning a unique id to the new note via 'uuid'.
     newNotes.id = uuidv4();
 
-    // Read data from 'db.json' file
+    // Read data from JSON file
     let notes = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
 
-    // Pushed new note in notes file 'db.json'
+    // Pushing a new note into the 'db.json' file.
     notes.push(newNotes);
 
-    // Written notes data to 'db.json' file
+    // Write notes to data 'db.json' file
     fs.writeFileSync('./db/db.json', JSON.stringify(notes));
     
     console.log("\nSuccessfully added new note to 'db.json' file!");
@@ -44,25 +43,26 @@ app.post("/api/notes", (req, res) => {
 });
 
 
-app.delete("/api/notes/:id", (req, res) => {
+app.delete("/api/notes/:id", function (req, res) {
 
-    // Fetched id to delete
+    // Retrieving the ID of the selected note.
     let noteID = req.params.id.toString();
     
-    console.log(`\n\nDELETE note request for noteId: ${noteID}`);
+    console.log(`${noteID} will be deleted`);
 
     // Read data from 'db.json' file
     let notes = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
 
-    // filter data to get notes except the one to delete
+    //filter data and return all notes except the note staged for deletion.
     const filterData = data.filter( note => note.id.toString() !== noteID );
 
     // Write new data to 'db.json' file
     fs.writeFileSync('./db/db.json', JSON.stringify(filterData));
     
-    console.log(`\nSuccessfully deleted note with id : ${noteID}`);
-
-    response.json(filterData);
+    console.log(`\n ${noteID} has been deleted`);
+    
+    //Returning filtered data.
+    res.json(filterData);
 });
 
 };
