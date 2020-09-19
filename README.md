@@ -43,17 +43,20 @@ For users that need to keep track of a lot of information, it's easy to forget o
 *NPM Path allows you to invoke the executables for any installed modules. ... The directory containing the current node executable, so any scripts that invoke node will execute the same node . Current npm's node-gyp directory, so the node-gyp bundled with npm can be used.
 
 ## Installation 
-You must perform a "npm install" in the directory hosting the package file and run the server.js program from your command line.
+*From workstation: You must perform a "npm install" in the directory hosting the package file and run the server.js program from your command line.
+*From web broswer: Navigate to https://bj-notetaker-app.herokuapp.com/notes
 
 # Demo
-![Team Profile Generator](Assets/demo.gif) 
-![Team Profile Generator](Assets/demo1.gif)
+![Team Profile Generator](Develop/public/Assets/demo.gif) 
+![Team Profile Generator](Develop/public/Assets/demo1.gif)
 
 ## Screenshot  
-|![HTML Screenshot](Assets/screen.JPG)
-![Command Line Screenshot](Assets/screen1.JPG)
+|![HTML Screenshot](Develop/public/Assets/screen.JPG)
+![Command Line Screenshot](Develop/public/Assets/screen1.JPG)
 
 ## Contributor
 * Brandon Johnson
 * Repository: https://github.com/sheikb08/NoteTaker
+* Deployed App: https://bj-notetaker-app.herokuapp.com/notes
+
 
