@@ -46,7 +46,7 @@ app.post("/api/notes", function (req, res) {
 app.delete("/api/notes/:id", function (req, res) {
 
     // Retrieving the ID of the selected note.
-    let noteID = req.params.id.toString();
+    let noteID = req.params.id;
     
     console.log(`${noteID} will be deleted`);
 
@@ -54,7 +54,7 @@ app.delete("/api/notes/:id", function (req, res) {
     let notes = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
 
     //filter data and return all notes except the note staged for deletion.
-    const filterData = data.filter( note => note.id.toString() !== noteID );
+    const filterData = notes.filter( note => note.id !== noteID );
 
     // Write new data to 'db.json' file
     fs.writeFileSync('./db/db.json', JSON.stringify(filterData));
