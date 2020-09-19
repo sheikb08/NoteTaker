@@ -45,6 +45,14 @@ For users that need to keep track of a lot of information, it's easy to forget o
 ## Installation 
 You must perform a "npm install" in the directory hosting the package file and run the server.js program from your command line.
 
+# Demo
+![Team Profile Generator](Assets/demo.gif) 
+![Team Profile Generator](Assets/demo1.gif)
+
+## Screenshot  
+|![HTML Screenshot](Assets/screen.JPG)
+![Command Line Screenshot](Assets/screen1.JPG)
+
 ## Contributor
 * Brandon Johnson
 * Repository: https://github.com/sheikb08/NoteTaker
